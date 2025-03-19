@@ -8,7 +8,7 @@ from rclpy.node import Node
 from nav2_msgs.action import NavigateToPose
 from geometry_msgs.msg import PoseStamped
 from rclpy.action import ActionClient
-
+from geometry_msgs.msg import Point
 
 class SendGoalNode(Node):
     def __init__(self):
@@ -16,13 +16,21 @@ class SendGoalNode(Node):
         self.action_client = ActionClient(self, NavigateToPose, 'navigate_to_pose')
         while not self.action_client.wait_for_server(timeout_sec=1.0):
             self.get_logger().info('Waiting for the navigate_to_pose action server...')
+        self.goal_position = {'x': 3.2, 'y': -0.6, 'z': 1.0 } #la position depart
+         #Créer un message Point
+        goal_point = Point()
+
+        # Affecter les valeurs du dictionnaire aux champs x, y, z du message
+        goal_point.x = self.goal_position['x']
+        goal_point.y = self.goal_position['y']
+        goal_point.z = self.goal_position['z']
 
     def send_goal(self):
         goal_pose = PoseStamped()
         goal_pose.header.frame_id = 'map'
-        goal_pose.pose.position.x = 3.2
-        goal_pose.pose.position.y = -0.6
-        goal_pose.pose.position.z = 0.0
+        goal_pose.pose.position.x = self.goal_position['x']
+        goal_pose.pose.position.y = self.goal_position['y']
+        goal_pose.pose.position.z = self.goal_position['z']
         goal_pose.pose.orientation.x = 0.0
         goal_pose.pose.orientation.y = 0.0
         goal_pose.pose.orientation.z = 0.0

@@ -13,6 +13,7 @@ from rclpy.node import Node
 from moveit.core.robot_state import RobotState
 from moveit.planning import MoveItPy
 from geometry_msgs.msg import PoseStamped
+from pick_and_place.detection_red import Image_traitment
 
 
 class MoveItExecutorNode(Node):
@@ -30,6 +31,11 @@ class MoveItExecutorNode(Node):
         # Store joint values of open/close gripper positions
         self.gripper_open_joints = {"left_finger": 0.04, "right_finger": 0.04}
         self.gripper_closed_joints = {"left_finger": 0.0, "right_finger": 0.0}
+
+                # détection dynamique 
+        self.can_position = Image_traitment(Node)  # Fonction hypothétique qui détecte la canette
+        self.bac_position = {'x': -4.8, 'y': -2.0, 'z': 0.0 } #la position du bac
+
 
 
     
@@ -66,9 +72,9 @@ class MoveItExecutorNode(Node):
         self.tiago_arm.set_start_state_to_current_state()
         pose_goal = PoseStamped()
         pose_goal.header.frame_id = "base_link"
-        pose_goal.pose.position.x = 4.25
-        pose_goal.pose.position.y = -0.6
-        pose_goal.pose.position.z = 0.4
+        pose_goal.pose.position.x = self.can_position
+        pose_goal.pose.position.y = self.can_position
+        pose_goal.pose.position.z = self.can_position
         pose_goal.pose.orientation.x = 0.0
         pose_goal.pose.orientation.y = 0.0
         pose_goal.pose.orientation.z = 0.0
@@ -104,6 +110,8 @@ class MoveItExecutorNode(Node):
 def main():
     rclpy.init()
     node = MoveItExecutorNode()
+    image_position= Image_traitment(Node)  # Instancier ici avec Node
+
     # Uncomment one of the following function calls to execute the respective plan
     # node.plan1()
     node.plan2()

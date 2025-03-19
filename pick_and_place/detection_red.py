@@ -5,7 +5,8 @@ from rclpy.node import Node
 from cv_bridge import CvBridge
 import cv2 as cv
 from sensor_msgs.msg import Image
-from trajectory_msgs.msg import JointTrajectory
+from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
+from geometry_msgs.msg import Twist
 import numpy as np
        
             
@@ -17,10 +18,12 @@ class Image_traitment(Node):
         self.logger = self.get_logger()
         self.logger.info("Initializing Capture image and executing motion...")
         self.subscription = self.create_subscription(Image, '/head_front_camera/image', self.listener_callback,10)
+        self.subscript= self.create_subscription(Image,'/head_front_camera/depth_image',self.listener1_callback,10)
         self.publisher = self.create_publisher(JointTrajectory, 'head_controller/joint_trajectory', 10)
-        timer_period = 0.5  # seconds
-        self.timer = self.create_timer(timer_period, self.timer_callback)
-        self.i = 0
+        self.pub = self.create_publisher(Twist,"key_vel", 10)
+        #timer_period = 0.5  # seconds
+        #self.timer = self.create_timer(timer_period, self.timer_callback)
+        #self.i = 0
         self.red = [0,0,255]
         self.color_info = (0, 255, 255)
         self.subscription
@@ -97,18 +100,38 @@ class Image_traitment(Node):
                 cv.line(frame, (int(x),int(y)), (int(x)+150,int(y)), self.color_info, 2)
                 cv.putText (frame, "objet rouge",(int(x)+10, int(y)-10), cv.FONT_HERSHEY_DUPLEX, 1, self.color_info, 1, cv.LINE_AA)
 
+                #parametre du deplacement de la tete
                 jtg = JointTrajectory()
-                jtg.points.positions = [0.5, 0.0]
+                jtg.joint_names = ['head_1_joint','head_2_joint']
+                jtpg = JointTrajectoryPoint()
+                jtpg.positions = [0.1, 0.0]
+                jtg.points.append(jtpg)
+
                 jtd = JointTrajectory()
-                jtd.points.positions = [0.5, 0.0]
+                jtpd = JointTrajectoryPoint()
+                jtd.joint_names = ['head_1_joint','head_2_joint']
+                jtpd.positions= [-0.1, 0.0]
+                jtd.points.append(jtpd)
+
+                #parametre du deplacement du corps
+                Kvg = Twist()
+                Kvg.angular.z=0.3
+
+                Kvd = Twist()
+                Kvd.angular.z=-0.3
+
 
                 print(y)
-                if x <= 200:
+                if x <= 300:
                     print ("gauche")
-                    self.publisher.publish(jtg)
+                    #self.publisher.publish(jtg)
+                    self.pub.publish(Kvg)
+                    print(jtg)
                 elif x >= 400:
                     print("Droite")
-                    self.publisher.publish(jtd)
+                    #self.publisher.publish(jtd)
+                    self.pub.publish(Kvd)
+                    print(jtd)
                 else:
                     print("center")
 
@@ -125,15 +148,33 @@ class Image_traitment(Node):
         cv_image = bridge.imgmsg_to_cv2(msg,"bgr8")
         return cv_image
     
+
     def pose_of_color_red(self,msg):
         frame = self.transform_image_ros_to_opencv_img(msg)
         self.Opencv_red(frame)
+
+    
+    def find_depth(self,frame_depth):
+        #frame= self.transform_image_ros_to_opencv_img(frame_depth)
+        bridge = CvBridge()
+        depth_image = bridge.imgmsg_to_cv2(frame_depth, desired_encoding='passthrough')
+        depth_array = np.array(depth_image, dtype=np.float32)
+        cv.imshow('pic', depth_array )
+        cv.waitKey(0)
+
 
 
     def listener_callback(self,msg):
         #self.get_logger().info('I heard: "%s"' %msg.data)
         self.pose_of_color_red(msg)
         #self.trackbar()
+    
+    def listener1_callback(self,msg):
+        #self.get_logger().info('I heard: "%s"' %msg.data)
+        #self.find_depth(msg)
+        print("reussie")
+
+
 
 
 
