@@ -14,13 +14,13 @@
 ## 3.Start DevContainer
   You need Visual Studio Code preinstalled
    ```bash
-  ** git clone https://gitlab.com/f2m2robserv/jazzy-ros-ynov/**
+  git clone https://gitlab.com/f2m2robserv/jazzy-ros-ynov/
   ```
 
   1.Visual Studio Code et Docker doivent être installés avant de lancer le conteneur:
 
    ```bash
-   **code jazzy-ros-ynov/**
+   code jazzy-ros-ynov/
    ```
     
 
@@ -29,9 +29,9 @@
   3.To build the workspace use:
   ```bash
    
-   **cd ~/ros2_ws
+   cd ~/ros2_ws
    colcon build --symlink-install
-   source ~/.bashrc**
+   source ~/.bashrc
    ```
     
 
@@ -42,7 +42,7 @@
 
  Puis, sourcez l'environnement avec :
  ```bash
- **source install/setup.bash**
+ source install/setup.bash
   ```
 
  5.Cela garantit que les changements sont correctement pris en compte dans le système.
@@ -55,27 +55,27 @@
 
  1.Start Gazebo simulation of Tiago robot:
    ```bash
-  **
-   ros2 launch tiago_gazebo tiago_gazebo.launch.py is_public_sim:=True world_name:=pick_and_place**
+  
+   ros2 launch tiago_gazebo tiago_gazebo.launch.py is_public_sim:=True world_name:=pick_and_place
    ```
 
  2.In a new terminal, start cartographer to run SLAM:
    
     ```bash
-      **ros2 launch tiago_2dnav tiago_nav_bringup.launch.py slam:=True is_public_sim:=True**
+      ros2 launch tiago_2dnav tiago_nav_bringup.launch.py slam:=True is_public_sim:=True
     ```
 
  3.In a new terminal, start teleoperation from the keyboard:
    
      ```bash
-     **ros2 run teleop_twist_keyboard teleop_twist_keyboard  --ros-args  -r /cmd_vel:=/key_vel**
+     ros2 run teleop_twist_keyboard teleop_twist_keyboard  --ros-args  -r /cmd_vel:=/key_vel
      ```
 
 
  4.Then move the robot to accumulate map data.
  Close teleoperation with Ctrl+C and save map to file our_map using:
    ```bash
-   **ros2 run nav2_map_server map_saver_cli -f ~/ros2_ws/src/pal_maps/maps/our_map/map**
+   ros2 run nav2_map_server map_saver_cli -f ~/ros2_ws/src/pal_maps/maps/our_map/map
    ```
 
 
@@ -86,7 +86,7 @@
 
  6.Start 2D navigation by loading your our_map map, using:
   ```bash 
-   **ros2 launch tiago_2dnav tiago_nav_bringup.launch.py is_public_sim:=True world_name:=our_map**
+   ros2 launch tiago_2dnav tiago_nav_bringup.launch.py is_public_sim:=True world_name:=our_map
   ```
 
 
@@ -108,14 +108,14 @@
  
  4.Command MoveIt using color handles from the GUI in RViz:
    ```bash
-  **ros2 launch tiago_moveit_config moveit_rviz.launch.py**
+  ros2 launch tiago_moveit_config moveit_rviz.launch.py
    
    ```
  
 
  5.Command MoveIt from Python file ros2_ws/src/tiago_pick_and_place/tiago_pick_and_place/pick.py:
    ```bash
-  **ros2 launch tiago_pick_and_place plan.launch.py use_sim_time:=True**
+  ros2 launch tiago_pick_and_place plan.launch.py use_sim_time:=True
    ```
 
 
