@@ -34,13 +34,13 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
   2.Lorsque VSCode s'ouvre, faites confiance aux sources et acceptez l'installation de l'extension Dev Container.
 
   3.Pour construire l'espace de travail, utilisez:
-    ```bash
-     
-     cd ~/ros2_ws
-     colcon build --symlink-install
-     source ~/.bashrc
-  
-     ```
+      ```bash
+      
+      cd ~/ros2_ws
+      colcon build --symlink-install
+      source ~/.bashrc
+      
+      ```
     
 
    
@@ -50,10 +50,10 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 
  Puis, sourcez l'environnement avec :
  
-     ```bash
-    
-     source install/setup.bash
-    
+      ```bash
+      
+      source install/setup.bash
+      
       ```
 
  5.Cela garantit que les changements sont correctement pris en compte dans le système.
