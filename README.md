@@ -60,29 +60,29 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
  
 ### 2.Lancer les differents Noeuds
   
-  1.dans un terminal, Démarrer la simulation Gazebo du robot Tiago :
+1.dans un terminal, Démarrer la simulation Gazebo du robot Tiago :
 
   ```bash
   
   ros2 launch tiago_gazebo tiago_gazebo.launch.py is_public_sim:=True world_name:=pick_and_place
 
   ```
-  2.Lancement du code de détection de couleur
+2.Lancement du code de détection de couleur
 
   Il existe 2 façons d'utiliser le code de détection. L'un avec "teleokey" et l'autre avec le "goto".
   Nous allons commencer par lancer le code de détection de couleur avec le "teleokey". Pour ce faire, on doit :
 
 
-  2.1.Lancement du code de détection de couleur avec "teleopkey"
+2.1.Lancement du code de détection de couleur avec "teleopkey"
 
-  2.1.1 dans un nouveau terminal, Lancer le noeud pour le traitement d' image :
+2.1.1 dans un nouveau terminal, Lancer le noeud pour le traitement d' image :
 
   ```bash
 
       ros2 run pick_and_place detection_red
 
   ```
-  2.1.2 dans un nouveau terminal, démarrer la téléopération à partir du clavier:
+2.1.2 dans un nouveau terminal, démarrer la téléopération à partir du clavier:
 
     ```bash
 
@@ -92,9 +92,9 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
   Maintenant vous pouvez deplacer le robot vers les canettes et constater que le robot se centre par rapport a la canette rouge detecté.
 
 
-  2.2.Lancement du code de détection de couleur avec "goto"
+2.2.Lancement du code de détection de couleur avec "goto"
 
-  2.2.1.Dans un nouveau terminal, Commencez la navigation en 2D en chargeant votre carte our_map, en utilisant :
+2.2.1.Dans un nouveau terminal, Commencez la navigation en 2D en chargeant votre carte our_map, en utilisant :
     **pour permettre au robot de se localiser sur la map**
   Dans RViz, utilisez les flèches pour contrôler la navigation : (NB : il est important de savoir que a ce niveau vouz devriez deja avoir la Map de l'environement)
 
@@ -106,7 +106,7 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 
 
 
-  2.2.2.Dans un nouveau terminal, Lancer le noeud pour le traitement d' image : 
+2.2.2.Dans un nouveau terminal, Lancer le noeud pour le traitement d' image : 
 
   ```bash
 
@@ -114,7 +114,7 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 
   ```
   
-  2.2.3.Dans un nouveau terminal, Lancer le noeud pour la navigation: 
+2.2.3.Dans un nouveau terminal, Lancer le noeud pour la navigation: 
 
   ```bash
 
