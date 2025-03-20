@@ -139,9 +139,9 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
    ```
  
 
- 5.Command MoveIt from Python file ros2_ws/src/tiago_pick_and_place/tiago_pick_and_place/pick.py:
+ 5.Command MoveIt from Python file ros2_ws/src/pick_and_place/pick_and_place/pick.py:
    ```bash
-  ros2 launch tiago_pick_and_place plan.launch.py use_sim_time:=True
+  ros2 launch pick_and_place plan.launch.py use_sim_time:=True
    ```
 
 
