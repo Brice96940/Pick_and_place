@@ -19,14 +19,14 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 ### 1.Démarrer DevContainer
   
       ```bash
-      git clone https://gitlab.com/f2m2robserv/jazzy-ros-ynov/
+        git clone https://gitlab.com/f2m2robserv/jazzy-ros-ynov/
       ```
     
   1.Visual Studio Code et Docker doivent être installés avant de lancer le conteneur:
     
       ```bash
       
-      code jazzy-ros-ynov/
+        code jazzy-ros-ynov/
       
       ```
     
@@ -128,11 +128,11 @@ Maintenant vous pouvez deplacer le robot vers les canettes et constater que le r
 3.Lancer le noeud pour le pick and place :
 
   **code à paufiner**
-    ```bash
-  
+      ```bash
+      
       ros2 run pick_and_place pick
-  
-    ```
+      
+      ```
 
   
 ## Références et bibliographie
