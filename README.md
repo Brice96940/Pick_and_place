@@ -1,10 +1,10 @@
 # Projet Robot Pick and Place avec détection d'image et navigation autonome
 
-## 1.Bref description
+## I. Bref description
 
   Ce projet implémente un système robotique autonome capable de réaliser la détection d'objets ( dans notre cas :une canette rouge) en utilisant OpenCV pour le traitement d'image et de centrer le robot par rapport a l'objet detecté. 
 
-## 2.Installation 
+## II. Installation 
 
 ### Prérequis
 
@@ -14,9 +14,9 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 - **Visual Studio Code** 
 
   
-## Instructions de lancement
+## III. Instructions de lancement
 
-  ### 1.Démarrer DevContainer
+### 1.Démarrer DevContainer
   
    ```bash
   git clone https://gitlab.com/f2m2robserv/jazzy-ros-ynov/
@@ -58,7 +58,7 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
  5.Cela garantit que les changements sont correctement pris en compte dans le système.
 
  
-  ### Lancer les differents Noeuds
+### 2.Lancer les differents Noeuds
   
   1.dans un terminal, Démarrer la simulation Gazebo du robot Tiago :
 
@@ -98,7 +98,7 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
     **pour permettre au robot de se localiser sur la map**
   Dans RViz, utilisez les flèches pour contrôler la navigation : (NB : il est important de savoir que a ce niveau vouz devriez deja avoir la Map de l'environement)
 
-  ### Estimer la pose 2D pour initialiser des particules aléatoires à une position approximative autour de la position réelle du robot
+### Estimer la pose 2D pour initialiser des particules aléatoires à une position approximative autour de la position réelle du robot
     
   ```bash 
       ros2 launch tiago_2dnav tiago_nav_bringup.launch.py is_public_sim:=True world_name:=our_map
