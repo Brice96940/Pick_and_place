@@ -74,7 +74,7 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
   Nous allons commencer par lancer le code de détection de couleur avec le "teleokey". Pour ce faire, on doit :
 
 
-2.1.Lancement du code de détection de couleur avec "teleopkey"
+**2.1.Lancement du code de détection de couleur avec "teleopkey"**
 
 2.1.1 dans un nouveau terminal, Lancer le noeud pour le traitement d' image :
 
@@ -92,7 +92,7 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 Maintenant vous pouvez deplacer le robot vers les canettes et constater que le robot se centre par rapport a la canette rouge detecté.
 
 
-2.2.Lancement du code de détection de couleur avec "goto"
+**2.2.Lancement du code de détection de couleur avec "goto"**
 
 2.2.1.Dans un nouveau terminal, Commencez la navigation en 2D en chargeant votre carte our_map, en utilisant :
 
@@ -126,6 +126,7 @@ Maintenant vous pouvez deplacer le robot vers les canettes et constater que le r
 
   
 3.Lancer le noeud pour le pick and place :
+
   **code à paufiner**
     ```bash
   
@@ -139,11 +140,22 @@ Ce projet s’appuie sur les sources suivantes :
 
 Documentation : https://docs.pal-robotics.com/sdk-dev/navigation
 
+Documentation : https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools.html
+
+Documentation : https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries.html
+
+Documentation : https://gitlab.com/f2m2robserv/jazzy-ros-ynov/-/tree/main#ros2-jazzy--robots-devcontainer
+
+Documentation : https://gitlab.com/ymollard/humble-ros-cremi/-/tree/main/snippets
+
 site: https://www.youtube.com/watch?v=g2xPdt3lVrw
 
 site: https://www.youtube.com/watch?v=K0EZKG1-fkw
 
 site: https://www.youtube.com/watch?v=aFNDh5k3SjU
+
+cours: https://robservynov.netlify.app/
+
 
 
 
