@@ -35,11 +35,11 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 
   3.Pour construire l'espace de travail, utilisez:
   
-    ```bash
+```bash
         cd ~/ros2_ws
         colcon build --symlink-install
         source ~/.bashrc
-    ```
+```
     
 
    
@@ -49,11 +49,11 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 
  Puis, sourcez l'environnement avec :
  
-    ```bash
+```bash
       
       source install/setup.bash
       
-    ```
+```
 
  5.Cela garantit que les changements sont correctement pris en compte dans le système.
 
@@ -62,11 +62,11 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
   
 1.dans un terminal, Démarrer la simulation Gazebo du robot Tiago :
 
-    ```bash
+```bash
       
       ros2 launch tiago_gazebo tiago_gazebo.launch.py is_public_sim:=True world_name:=pick_and_place
     
-    ```
+```
 2.Lancement du code de détection de couleur
 
   Il existe 2 façons d'utiliser le code de détection. L'un avec "teleokey" et l'autre avec le "goto".
@@ -77,17 +77,17 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 
 2.1.1 dans un nouveau terminal, Lancer le noeud pour le traitement d' image :
 
-  ```bash
+```bash
   
         ros2 run pick_and_place detection_red
-  ```
+```
 
 2.1.2 dans un nouveau terminal, démarrer la téléopération à partir du clavier:
 
-    ```bash
+```bash
   
         ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/key_vel
-    ```
+```
 Maintenant vous pouvez deplacer le robot vers les canettes et constater que le robot se centre par rapport a la canette rouge detecté.
 
 
@@ -101,25 +101,25 @@ Maintenant vous pouvez deplacer le robot vers les canettes et constater que le r
 
   Estimer la pose 2D pour initialiser des particules aléatoires à une position approximative autour de la position réelle du robot
     
-   ```bash 
+```bash 
         ros2 launch tiago_2dnav tiago_nav_bringup.launch.py is_public_sim:=True world_name:=our_map
-   ```
+```
 
 
 
 2.2.2.Dans un nouveau terminal, Lancer le noeud pour le traitement d' image : 
 
-  ```bash
+```bash
   
       ros2 run pick_and_place detection_red
-  ```
+```
   
 2.2.3.Dans un nouveau terminal, Lancer le noeud pour la navigation: 
 
-  ```bash
+```bash
   
       ros2 run pick_and_place goto
-  ```
+```
 
   Ici vous pouvez voir le robot s'approcher des canette tout en se centrant par rapport a la canette.
 
@@ -127,11 +127,11 @@ Maintenant vous pouvez deplacer le robot vers les canettes et constater que le r
 3.Lancer le noeud pour le pick and place :
 
   **code à paufiner**
-    ```bash
+```bash
       
       ros2 run pick_and_place pick
       
-    ```
+```
 
   
 ## Références et bibliographie
