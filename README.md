@@ -84,7 +84,7 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 
 2.1.2 dans un nouveau terminal, démarrer la téléopération à partir du clavier:
 
-    ```bash
+  ```bash
 
       ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/key_vel
   ```
