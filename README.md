@@ -80,14 +80,13 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
   ```bash
 
       ros2 run pick_and_place detection_red
-
   ```
+
 2.1.2 dans un nouveau terminal, démarrer la téléopération à partir du clavier:
 
     ```bash
 
       ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/key_vel
-
   ```
   Maintenant vous pouvez deplacer le robot vers les canettes et constater que le robot se centre par rapport a la canette rouge detecté.
 
@@ -111,7 +110,6 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
   ```bash
 
     ros2 run pick_and_place detection_red
-
   ```
   
 2.2.3.Dans un nouveau terminal, Lancer le noeud pour la navigation: 
@@ -119,7 +117,6 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
   ```bash
 
     ros2 run pick_and_place goto
-
   ```
 
   Ici vous pouvez voir le robot s'approcher des canette tout en se centrant par rapport a la canette.
