@@ -136,7 +136,14 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
   
 ## Références et bibliographie
 Ce projet s’appuie sur les sources suivantes :
+
 Documentation : https://docs.pal-robotics.com/sdk-dev/navigation
+
+site: https://www.youtube.com/watch?v=g2xPdt3lVrw
+
+site: https://www.youtube.com/watch?v=K0EZKG1-fkw
+
+site: https://www.youtube.com/watch?v=aFNDh5k3SjU
 
 
 
