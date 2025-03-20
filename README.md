@@ -77,18 +77,18 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 **2.1.Lancement du code de détection de couleur avec "teleopkey"**
 
 2.1.1 dans un nouveau terminal, Lancer le noeud pour le traitement d' image :
+
+    ```bash
   
-      ```bash
-    
-          ros2 run pick_and_place detection_red
-      ```
+        ros2 run pick_and_place detection_red
+    ```
 
 2.1.2 dans un nouveau terminal, démarrer la téléopération à partir du clavier:
 
-      ```bash
-    
-          ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/key_vel
-      ```
+    ```bash
+  
+        ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/key_vel
+    ```
 Maintenant vous pouvez deplacer le robot vers les canettes et constater que le robot se centre par rapport a la canette rouge detecté.
 
 
@@ -102,25 +102,25 @@ Maintenant vous pouvez deplacer le robot vers les canettes et constater que le r
 
   Estimer la pose 2D pour initialiser des particules aléatoires à une position approximative autour de la position réelle du robot
     
-      ```bash 
-          ros2 launch tiago_2dnav tiago_nav_bringup.launch.py is_public_sim:=True world_name:=our_map
-      ```
+    ```bash 
+        ros2 launch tiago_2dnav tiago_nav_bringup.launch.py is_public_sim:=True world_name:=our_map
+    ```
 
 
 
 2.2.2.Dans un nouveau terminal, Lancer le noeud pour le traitement d' image : 
 
-      ```bash
-    
-        ros2 run pick_and_place detection_red
-      ```
+    ```bash
+  
+      ros2 run pick_and_place detection_red
+    ```
   
 2.2.3.Dans un nouveau terminal, Lancer le noeud pour la navigation: 
 
-      ```bash
-    
-        ros2 run pick_and_place goto
-      ```
+    ```bash
+  
+      ros2 run pick_and_place goto
+    ```
 
   Ici vous pouvez voir le robot s'approcher des canette tout en se centrant par rapport a la canette.
 
@@ -128,11 +128,11 @@ Maintenant vous pouvez deplacer le robot vers les canettes et constater que le r
 3.Lancer le noeud pour le pick and place :
 
   **code à paufiner**
-      ```bash
-    
-        ros2 run pick_and_place pick
-    
-      ```
+    ```bash
+  
+      ros2 run pick_and_place pick
+  
+    ```
 
   
 ## Références et bibliographie
