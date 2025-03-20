@@ -3,12 +3,19 @@
 
 ## 1.Description
 
-  Ce projet implémente un système robotique autonome capable de réaliser des opérations  de Pick and Place en utilisant la détection d'images pour identifier les objets, la navigation (Nav2)
-  pour se déplacer vers les objets et les zones de dépôt, ainsi que la manipulation robotique pour la prise et le placement (MoveIt2).
-
+  Ce projet implémente un système robotique autonome capable de réaliser la détection d'objets ( dans notre cas :une canette rouge) en utilisant OpenCV pour le traitement d'image. Il identifie les objets et utilise la navigation (Nav2) pour se déplacer vers une position où le robot peut centrer la canette rouge, facilitant ainsi la mise en œuvre d'une éventuelle opération de Pick and Place.
 
 ## 2.Installation 
-   ROS2 Jazzy + robots DevContainer
+
+ ### Prérequis
+
+Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
+
+- **ROS 2 Jazzy** (ou toute version compatible de ROS 2)
+- **Docker** pour exécuter des conteneurs Dev
+- **Visual Studio Code** 
+
+  robots DevContainer:
    This is a Dev container for Visual Studio Code, offering ROS 2 Jazzy and PAL Tiago robot.
 
 ## 3.Start DevContainer
@@ -20,7 +27,9 @@
   1.Visual Studio Code et Docker doivent être installés avant de lancer le conteneur:
 
    ```bash
+
    code jazzy-ros-ynov/
+
    ```
     
 
@@ -32,24 +41,29 @@
    cd ~/ros2_ws
    colcon build --symlink-install
    source ~/.bashrc
+
    ```
     
 
    
-  4.important : Après chaque modification du code, il est nécessaire  de reconstruire le projet en utilisant la commande suivante (le  workspace):
+  4.Important : Après chaque modification du code, il est nécessaire  de reconstruire le projet en utilisant la commande suivante (le  workspace):
    
    **colcon build**
 
  Puis, sourcez l'environnement avec :
  ```bash
+
  source install/setup.bash
+
   ```
 
  5.Cela garantit que les changements sont correctement pris en compte dans le système.
 
 
 
-## Tiago 2D navigation using Nav2
+
+
+## Lancement du projet 
 
  Documentation : https://docs.pal-robotics.com/sdk-dev/navigation
 
@@ -57,49 +71,62 @@
    ```bash
   
    ros2 launch tiago_gazebo tiago_gazebo.launch.py is_public_sim:=True world_name:=pick_and_place
+
    ```
 
- 2.In a new terminal, start cartographer to run SLAM:
-   
-    ```bash
-      ros2 launch tiago_2dnav tiago_nav_bringup.launch.py slam:=True is_public_sim:=True
-    ```
+ 2.Lancer le noeud pour le traitement d' image :
 
- 3.In a new terminal, start teleoperation from the keyboard:
-   
-     ```bash
-     ros2 run teleop_twist_keyboard teleop_twist_keyboard  --ros-args  -r /cmd_vel:=/key_vel
-     ```
-
-
- 4.Then move the robot to accumulate map data.
- Close teleoperation with Ctrl+C and save map to file our_map using:
    ```bash
-   ros2 run nav2_map_server map_saver_cli -f ~/ros2_ws/src/pal_maps/maps/our_map/map
-   ```
+
+      ros2 run pick_and_place detection_red
+
+  ```
 
 
 
+ 3.Start 2D navigation by loading your our_map map, using:
+    **pour permettre au robot de ce localiser sur la map**
+    In RViz use the arrows to control navigation:
 
- 5.Close the SLAM terminal with Ctrl+C.
- If you have not used --symlink-install, workspace building and sourcing are needed so that the new map is installed.
 
- 6.Start 2D navigation by loading your our_map map, using:
+  1.Estimate 2D pose to initialize random particles to an approximate position around the actual robot position
+
   ```bash 
    ros2 launch tiago_2dnav tiago_nav_bringup.launch.py is_public_sim:=True world_name:=our_map
   ```
 
 
 
+ 2.Lancer le noeud pour la navigation la navigation : 
+   ```bash
 
-## teleoperation and navigation both publish Twist robot commands   to /cmd_vel: make sure they don't publish at the same time, your robot would      receive contradictory commands.
- In RViz use the arrows to control navigation:
+    ros2 run pick_and_place goto
+
+   ```
+    
+ 3.Lancer le noeud pour le pick and place :
+   **code à paufiner**
+
+    ```bash
+
+    ros2 run pick_and_place pick
+
+    ```
+
+  
+4.Lancer un launch
+  Le CLI ROS permet de démarrer des launch files avec :
+  **code à paufiner**
+  ```bash
+
+      ros2 launch pick_and_place  pick_canette.launch.py
+
+  ```
 
 
- 1.Estimate 2D pose to initialize random particles to an approximate position around the actual robot position
- Send a 2D nav goal to any point of the map: your robot must navigate there
 
- 2.Command navigation from Python code using the navigate_to_pose action service (see workshops instructions)
+
+## Command navigation from Python code using the navigate_to_pose action service (see workshops instructions)
  4-waypoints robot patrol: Inspire from the goto code to add a new patrol node, endlessly patroling between 4 map poses.
 
  3.Tiago arms and gripper manipulation using MoveIt2
