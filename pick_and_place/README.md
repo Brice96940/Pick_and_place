@@ -106,12 +106,11 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
     
  3.Lancer le noeud pour le pick and place :
    **code à paufiner**
-
-    ```bash
+  ```bash
 
     ros2 run pick_and_place pick
 
-    ```
+  ```
 
   
 4.Lancer un launch
