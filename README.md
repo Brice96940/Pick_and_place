@@ -95,7 +95,7 @@ Maintenant vous pouvez deplacer le robot vers les canettes et constater que le r
 
 2.2.1.Dans un nouveau terminal, Commencez la navigation en 2D en chargeant votre carte our_map, en utilisant :
 
-    **pour permettre au robot de se localiser sur la map**
+  **pour permettre au robot de se localiser sur la map**
     
   Dans RViz, utilisez les flèches pour contrôler la navigation : (NB : il est important de savoir que a ce niveau vouz devriez deja avoir la Map de l'environement)
 
