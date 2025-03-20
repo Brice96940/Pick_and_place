@@ -88,7 +88,7 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 
       ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/key_vel
   ```
-  Maintenant vous pouvez deplacer le robot vers les canettes et constater que le robot se centre par rapport a la canette rouge detecté.
+Maintenant vous pouvez deplacer le robot vers les canettes et constater que le robot se centre par rapport a la canette rouge detecté.
 
 
 2.2.Lancement du code de détection de couleur avec "goto"
