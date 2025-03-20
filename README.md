@@ -25,10 +25,10 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
     
   1.Visual Studio Code et Docker doivent être installés avant de lancer le conteneur:
     
-   ```bash
+    ```bash
       
         code jazzy-ros-ynov/
-   ```
+    ```
     
 
   2.Lorsque VSCode s'ouvre, faites confiance aux sources et acceptez l'installation de l'extension Dev Container.
